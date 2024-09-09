@@ -1,11 +1,11 @@
 package pages;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class QuestionaryPage extends BasePage {
-
     //Elementy Strony
     @FindBy(xpath = "//input[@id='Imię']")
     WebElement questionaryName;
@@ -49,21 +49,30 @@ public class QuestionaryPage extends BasePage {
     WebElement questionarySelectVolleyBall;
     @FindBy(xpath="//input[@class='form-control white']")
     WebElement questionaryDateInput;
-
+    @FindBy(xpath="//input[@type='button' and @value='Alert']")
+    WebElement questionaryAlertButton;
+    @FindBy(xpath="//input[@type='button' and @value='Prompt Alert']")
+    WebElement questionaryPromptAlertButton;
+    @FindBy(xpath="//input[@type='button' and @value='Confirm Alert']")
+    WebElement questionaryConfirmAlertButton;
+    @FindBy(xpath="//input[@type='button' and @value='Kliknij RIGHT']")
+    WebElement questionaryRightClickButton;
+    @FindBy(xpath="//input[@type='button' and @value='PROCES']")
+    WebElement questionaryProcesButton;
+    @FindBy(xpath="//input[@type='button' and @value='Dwuklik pokaż komunikat']")
+    WebElement questionaryDoubleClickButton;
+    @FindBy(xpath="//input[@type='button' and @value='Otwórz nowe okno']")
+    WebElement questionaryOpenNewWindowButton;
     public QuestionaryPage(WebDriver driver) {
         super(driver);
     }
     //Konstruktor + inicjalizacja pageFactory
-
-
-
     public void QuestionaryFieldName(){
         questionaryName.sendKeys("Wojtek");
     }
     public void QuestionaryFieldSurname(){
         questionarySurname.sendKeys("Ziutowy");
     }
-
     public void QuestionaryGenderOptionOne(){
         questionaryFemale.click();
     }
@@ -88,19 +97,15 @@ public class QuestionaryPage extends BasePage {
     public void QuestionaryFieldAge60100(){
         questionaryAge60100.click();
     }
-
     public void QuestionaryFieldShirt() {
         questionaryItemShirt.click();
     }
-
     public void QuestionaryFieldBall() {
         questionaryItemBall.click();
     }
-
     public void QuestionaryFieldShoes() {
         questionaryItemShoes.click();
     }
-
     public void QuestionaryFieldBag() {
         questionaryItemBag.click();
     }
@@ -126,4 +131,28 @@ public class QuestionaryPage extends BasePage {
         questionaryDateInput.sendKeys(dataField);
         actions.sendKeys(Keys.ESCAPE).perform();
     }
+    public void QuestionaryAlertButtonClick(){
+        questionaryAlertButton.click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void QuestionaryPromptAlertButtonClick(){
+        questionaryPromptAlertButton.click();
+        Alert promptAlert = driver.switchTo().alert();
+        String textToPromptAlert = "testowy teskt";
+        promptAlert.sendKeys(textToPromptAlert);
+        promptAlert.accept();
+    }
+    public void QuestionaryConfirmAlertButtonClick(){
+        questionaryConfirmAlertButton.click();
+        Alert confirmAcceptAlert = driver.switchTo().alert();
+        confirmAcceptAlert.accept();
+    }
+    public void QuestionaryDismissAlertButtonClick(){
+        questionaryConfirmAlertButton.click();
+        Alert confirmDismissAlert = driver.switchTo().alert();
+        confirmDismissAlert.dismiss();
+    }
+    public void QuestionaryClickRicghtButtonClick(){questionaryRightClickButton.click();}
+    public void QuestionaryProcesButtonClick(){questionaryProcesButton.click();}
 }
