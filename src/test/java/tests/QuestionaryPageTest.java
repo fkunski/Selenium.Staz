@@ -2,7 +2,6 @@ package tests;
 import com.aventstack.extentreports.Status;
 import org.testng.annotations.Test;
 import pages.LoggerClass;
-//import
 public class QuestionaryPageTest extends QuestionaryBase {
     //Metody testowe
     @Test
