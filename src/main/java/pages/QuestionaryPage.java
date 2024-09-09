@@ -138,9 +138,13 @@ public class QuestionaryPage extends BasePage {
     }
     public void QuestionaryPromptAlertButtonClick(){
         questionaryPromptAlertButton.click();
+    }
+    public void QuestionaryPromptAlertTextInsert(String textToPrompt){
         Alert promptAlert = driver.switchTo().alert();
-        String textToPromptAlert = "testowy teskt";
-        promptAlert.sendKeys(textToPromptAlert);
+        promptAlert.sendKeys(textToPrompt);
+    }
+    public void QuestionaryPromptAlertAcceptButton(){
+        Alert promptAlert = driver.switchTo().alert();
         promptAlert.accept();
     }
     public void QuestionaryConfirmAlertButtonClick(){
@@ -153,6 +157,6 @@ public class QuestionaryPage extends BasePage {
         Alert confirmDismissAlert = driver.switchTo().alert();
         confirmDismissAlert.dismiss();
     }
-    public void QuestionaryClickRicghtButtonClick(){questionaryRightClickButton.click();}
+    public void QuestionaryClickRightButtonClick(){questionaryRightClickButton.click();}
     public void QuestionaryProcesButtonClick(){questionaryProcesButton.click();}
 }
