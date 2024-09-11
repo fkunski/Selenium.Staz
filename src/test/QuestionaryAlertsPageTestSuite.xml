@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Shop TestNG Questionary Page">
+    <test name="Questionary Page Chrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="tests.QuestionaryAlertsPageTest">
+                <methods>
+                    <include name="questionaryAlertButtonTest"/>
+                    <include name="questionaryPromptAlertButtonTest"/>
+                    <include name="questionaryConfirmAlertButtonTest"/>
+                    <include name="questionaryCancelAlertButtonTest"/>
+                    <include name="questionaryRightClickTest"/>
+                    <include name="questionaryProcesButtonClickTest"/>
+
+
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--        <test name="Questionary Page Edge">-->
+<!--            <parameter name="browser" value="edge"></parameter>-->
+<!--            <classes>-->
+<!--                <class name="tests.QuestionaryAlertsPageTest">-->
+<!--                    <methods>-->
+<!--                        <include name="questionaryAlertButtonTest"/>-->
+<!--                        <include name="questionaryPromptAlertButtonTest"/>-->
+<!--                        <include name="questionaryConfirmAlertButtonTest"/>-->
+<!--                        <include name="questionaryCancelAlertButtonTest"/>-->
+<!--                        <include name="questionaryRightClickTest"/>-->
+<!--                        <include name="questionaryProcesButtonClickTest"/>-->
+
+
+<!--                    </methods>-->
+<!--                </class>-->
+<!--            </classes>-->
+<!--        </test>-->
+</suite>

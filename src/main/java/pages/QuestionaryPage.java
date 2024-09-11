@@ -1,9 +1,8 @@
 package pages;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Set;
 
 public class QuestionaryPage extends BasePage {
     //Elementy Strony
@@ -57,12 +56,20 @@ public class QuestionaryPage extends BasePage {
     WebElement questionaryConfirmAlertButton;
     @FindBy(xpath="//input[@type='button' and @value='Kliknij RIGHT']")
     WebElement questionaryRightClickButton;
+//    @FindBy(xpath="//input[@id='rightClickInfo']")
+//    WebElement questionaryRightClickInfo;
     @FindBy(xpath="//input[@type='button' and @value='PROCES']")
     WebElement questionaryProcesButton;
+    //@FindBy(xpath="//p[@id='procesLoad']")
+    //WebElement questionaryProcesLoad;
     @FindBy(xpath="//input[@type='button' and @value='Dwuklik pokaż komunikat']")
     WebElement questionaryDoubleClickButton;
     @FindBy(xpath="//input[@type='button' and @value='Otwórz nowe okno']")
-    WebElement questionaryOpenNewWindowButton;
+    WebElement questionaryNewTab;
+    @FindBy(xpath = "//input[@id='imie_nazwisko']")
+    WebElement questionaryNameSurname;
+    @FindBy(xpath="//input[@type='buttom' and @value='Zamknij okno przeglądarki']")
+    WebElement getQuestionaryCloseOpenedTab;
     public QuestionaryPage(WebDriver driver) {
         super(driver);
     }
@@ -157,6 +164,39 @@ public class QuestionaryPage extends BasePage {
         Alert confirmDismissAlert = driver.switchTo().alert();
         confirmDismissAlert.dismiss();
     }
-    public void QuestionaryClickRightButtonClick(){questionaryRightClickButton.click();}
-    public void QuestionaryProcesButtonClick(){questionaryProcesButton.click();}
+    public void QuestionaryClickRightButtonClick(){
+        actions.contextClick(questionaryRightClickButton).perform();
+        assert(driver.findElement(By.xpath("//p[@id='rightClickInfo']"))).isDisplayed();
+    }
+    public void QuestionaryProcesButtonClick(){
+        questionaryProcesButton.click();
+    }
+    public void QuestionaryDoubleClick(){
+        actions.doubleClick(questionaryDoubleClickButton).perform();
+    }
+    public void QuestionaryNewTabClick(){
+        questionaryNewTab.click();
+    }
+    public void QuestionaryChangeTabInBrowser(){
+        //pobieramy info o zakladce
+        String originalTabName =driver.getWindowHandle();
+        //oczekiwanie na nowa zakladke
+        Set<String> allWindows = driver.getWindowHandles();
+        //ta petla sprawdza czy druga zakladka sie otworzyla
+        while(allWindows.size()==1){
+            allWindows = driver.getWindowHandles();
+        }
+        //przelaczanie na druga zakladke
+        for(String windowHadle : allWindows){
+            if(!windowHadle.equals(originalTabName)){
+                driver.switchTo().window(windowHadle);
+                break;
+            }
+        }
+        //obsluga w nowej zakladce
+        questionaryNameSurname.sendKeys("teskt");
+        getQuestionaryCloseOpenedTab.click();
+        //powrot do pierwotnej zakladki
+        driver.switchTo().window(originalTabName);
+    }
 }

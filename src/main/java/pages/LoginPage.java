@@ -13,15 +13,19 @@ public class LoginPage extends BasePage{
     WebElement passwordField;
     @FindBy(xpath = "//button[@type='submit' and @value='Zaloguj się']")
     WebElement loginButton;
-    @FindBy(xpath = "//a[text()='Wyloguj]")
+    @FindBy(xpath = "//a[text()='Wyloguj']")
     WebElement logoutButton;
     public LoginPage(WebDriver driver) {
         super(driver);
     }
     //metody loginpagea
-    public void LoginFirstUser(String username, String password){
+    public void sendUsernameField(String username){
         usernameField.sendKeys(username);
-        passwordField.sendKeys(password);
+    }
+    public void sendPasswordField(String password){
+        usernameField.sendKeys(password);
+    }
+    public void loginButtonClick(){
         loginButton.click();
     }
     public void LogoutUser(){

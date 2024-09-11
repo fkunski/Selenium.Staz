@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium Shop TestNG Questionary Page">
     <test name="Questionary Page Chrome">
-        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.QuestionaryPageTest">
                 <methods>
@@ -19,22 +19,22 @@
             </class>
         </classes>
     </test>
-<!--    <test name="Questionary Page Edge">-->
-<!--        <parameter name="browser" value="edge"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="tests.QuestionaryPageTest">-->
-<!--                <methods>-->
-<!--                    <include name="questionaryNameSurnameTest"/>-->
-<!--                    <include name="questionaryGenderOptionOneTest"/>-->
-<!--                    <include name="questionaryGenderOptionOneTwo"/>-->
-<!--                    <include name="questionaryAgeOptionTest"/>-->
-<!--                    <include name="questionaryProductOptionTest"/>-->
-<!--                    <include name="questionarySelectOptionTest"/>-->
-<!--                    <include name="questionaryDateInput"/>-->
+    <test name="Questionary Page Edge">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="tests.QuestionaryPageTest">
+                <methods>
+                    <include name="questionaryNameSurnameTest"/>
+                    <include name="questionaryGenderOptionOneTest"/>
+                    <include name="questionaryGenderOptionOneTwo"/>
+                    <include name="questionaryAgeOptionTest"/>
+                    <include name="questionaryProductOptionTest"/>
+                    <include name="questionarySelectOptionTest"/>
+                    <include name="questionaryDateInput"/>
 
 
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
